@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body{
+background:#eee;
+}
+
+h1, h2{
+text-align:center;
+}
+  
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.subunit-boundary {
+fill: none;
+stroke: #777;
+stroke-dasharray: 2,2;
+stroke-linejoin: round;
+}
+
+#chart-holder{
+min-height:800px;
+}
+
+#main-chart-holder{
+height: 600px;
+position:relative;
+}
+
+#main-chart{
+font: 12px sans-serif;
+}
+
+#sub-chart-holder{
+   height: 200px; --
+<!-- background: #eee; -->
+}
+
+#sub-chart-graph{
+<!-- height:300px; -->
+background: #666;
+}
+
+#buttons .btn{
+<!-- margin-left: 5px -->
+}
+
+#slider-wrapper{
+min-height:60px;
+}
+
+#year-slider{
+width: 500px;
+}
+
+div#years{
+position:fixed;
+left:450px;
+font-size:42px;
+font-weight:bold;
+}
+
+div#years span{
+vertical-alignment: middle;
+}
+
+span#yearstart{
+color:#ccc;
+}
+
+.cbar-title{
+font: 12px sans-serif;
+}
+</style>
+
+<div class='container'>
+  <h1>Warped England</h1> 
+  <h2>Visualizing change in the ratio of house-prices to household-incomes</h2>
+  <p>Probably the two most important English economic indicators, for the common citizenry at least, are median average house price and median average household income. The 'median' is important here, for a brief explanation go here (get here). By combining these two we can derive a ratio, of house-prices to household-incomes (HP->HI), which says a lot about the state of the English economy.</br> I wanted to track the changes of this ratio using the most recent data available (1997-2012) and, to dramatically emphasize the change, reflect this by warping a map of the English regions to make the areas reflect the change in this ratio since 1997. What this shows is a staggering reduction in house-purchasing power over a mere fifteen years, not even a full generation. Across England the HP->HI has doubled during this period, but many regions, particularly the south-east, have seen far greater rises (e.g. Brighton's 3.75 -> 9.5).
+    </br>This trend represents nothing less than the economic disenfranchisement of present and future generations. 
+  </p>
+  <div class='row' id='chart-holder'>
+    <div class="col-md-7" id='main-chart-holder'>
+    <p>The map below shows the English regions, with their areas warped so as to reflect the reduction, relative to 1997, of the house purchasing power of the median average household wage. You can click on a region to highlight it (right). The slider at the bottom allows you to change the year, or you can press the animate button. To turn the area warping off press 'warp off'.</p>
+    <div class='btn-group btn-group-sm' id='buttons'></div>
+  <div id='years'><span id='current'>1997</span> / <span id='yearstart'>1997</span></div>
+      <svg id="main-chart"></svg>
+      <div id='slider-wrapper'>
+        <div id='year-slider'></div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <h2 id="sub-chart-title"></h2>
+      <div class='row'>
+        <div class="col-md-6" id='sub-chart-holder'>
+          <svg id="sub-chart"></svg>
+        </div>
+        <div class="col-md-6" id='sub-chart-info'>
+          <p>Here we superimpose a shrunken county map, adjusting for the change in buying power since 1997. The map is scaled by the ratio HPIMWM for year selected divided by that in 1997. 
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-12'>
+      Below is a line-chart showing the yearly change in house-prices as a multiple of median household income for England and a selected region. Click on the big map to change the region.
+        </div>
+        <div class='col-md-12' id='sub-chart-graph'></div>
+      </div>
+    </div>
+  </div>
+  <div id='infobox'>
+    <h3>Credits</h3>
+    <h4>Libraries</h4>
+    <p><a href="http://d3js.org">D3</a> did the heavy-lifting with it's wonderful topographic map extensions. Shawn Allen's <a href="https://github.com/shawnbot/d3-cartogram/">d3-cartogram</a> is a very cool little implementation of James A. Dougenik, Nicholas R. Chrisman and Duane R. Niemeyer's cartogramic algorithm. The docs are a little on the sparse side but it was nice to have. Generally cartograms preserve the total original area but I wanted that to shrink with the HI->HP ratio, which required hacking the source (yay for open-source software). I used the <a href="http://dimplejs.org">Dimple</a> library for the chart but had to fight it a little to get what I wanted. Once again I'm reminded that D3's great boon is to enable one to break free of such constraints. Thanks to all.</br> 
+      <h4>Data</h4> 
+      The data was supplied by <a href="http://data.gov.uk/dataset/ratio-of-median-house-price-to-median-earnings">data.gov.uk</a> under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence.</a>
+  </div>
+</div>
+
+<script type="text/javascript" src="/static/libs/jquery-extras/iframeResizer/js/iframeResizer.contentWindow.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="static/lib/d3.slider.js"></script>
+<link rel="stylesheet" href="static/lib/d3.slider.css" type="text/css" media="screen" />
+<script src="static/lib/colorbrewer.js"></script>
+<script src="static/cartogram.js"></script>
+<script src="static/lib/dimple.v2.1.0.min.js"></script>
+<script src="static/d3_basic_chart.js"></script>
+<script src="static/kcharts.js"></script>
+<script src="static/script.js"></script>

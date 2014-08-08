@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets:METS xmlns:mets="http://www.loc.gov/METS/" xmlns:xlink="http://www.w3.org/TR/xlink/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dim="http://www.dspace.org/xmlns/dspace/dim" OBJEDIT="/admin/item?itemID=481" OBJID="/handle/10672/304" PROFILE="DSPACE METS SIP Profile 1.0" LABEL="DSpace Item" ID="hdl:10672/304">
+<mets:dmdSec GROUPID="group_dmd_0" ID="dmd_1">
+<mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DIM">
+<mets:xmlData>
+<dim:dim dspaceType="ITEM">
+<dim:field element="contributor" mdschema="dc">Gillard, Emily</dim:field>
+<dim:field element="contributor" qualifier="other" language="en" mdschema="dc">EDINA</dim:field>
+<dim:field element="coverage" qualifier="spatial" language="en" mdschema="dc">northlimit=60.7837;eastlimit=2.7043;southlimit=49.8176;westlimit=-7.4856;</dim:field>
+<dim:field element="coverage" qualifier="temporal" mdschema="dc">2012-05-10</dim:field>
+<dim:field element="date" qualifier="accessioned" mdschema="dc">2012-05-10T09:19:50Z</dim:field>
+<dim:field element="date" qualifier="available" mdschema="dc">2012-05-10T09:19:50Z</dim:field>
+<dim:field element="date" qualifier="issued" mdschema="dc">2012-05-10</dim:field>
+<dim:field element="identifier" mdschema="dc">http://www.sharegeo.ac.uk/bitstream/handle/10672/304/County_UnitaryAuthority.zip?sequence=1</dim:field>
+<dim:field element="identifier" qualifier="uri" mdschema="dc">http://hdl.handle.net/10672/304</dim:field>
+<dim:field element="description" language="en" mdschema="dc">This dataset was made from the OS OpenData Boundary Line product: http://www.ordnancesurvey.co.uk/oswebsite/products/boundary-line/index.html</dim:field>
+<dim:field element="description" qualifier="abstract" language="en" mdschema="dc">This data shows the counties and unitary authorities of Great Britain for 2012. The attached Layer File can be used to symbolise the different types of boundaries (Non-Metropolitan Counties/Metropolitan Counties/Unitary Authorities/Council Areas/Greater London). A JPEG image of the map is also contained in the download.</dim:field>
+<dim:field element="format" language="en" mdschema="dc">ESRI Shapefile</dim:field>
+<dim:field element="language" qualifier="iso" language="en" mdschema="dc">en</dim:field>
+<dim:field element="rights" language="en" mdschema="dc">This data is made available under the Creative Commons Attribution 3.0 license whose full text can be found at http://creativecommons.org/licenses/by/3.0/legalcode</dim:field>
+<dim:field element="subject" qualifier="classification" language="en" mdschema="dc">Boundaries</dim:field>
+<dim:field element="title" language="en" mdschema="dc">Great Britain counties and unitary authories 2012</dim:field>
+<dim:field element="type" language="en" mdschema="dc">GIS vector data</dim:field>
+</dim:dim>
+</mets:xmlData>
+</mets:mdWrap>
+</mets:dmdSec>
+<mets:fileSec>
+<mets:fileGrp USE="CONTENT">
+<mets:file CHECKSUMTYPE="MD5" GROUPID="group_file_713" ID="file_713" MIMETYPE="application/zip" SIZE="15962632" CHECKSUM="a39674fd6a314e50eb16918b9e7e66c4">
+<mets:FLocat LOCTYPE="URL" xlink:title="County_UnitaryAuthority.zip" xlink:type="locator" xlink:href="/bitstream/handle/10672/304/County_UnitaryAuthority.zip?sequence=1"/>
+</mets:file>
+</mets:fileGrp>
+<mets:fileGrp USE="LICENSE">
+<mets:file CHECKSUMTYPE="MD5" GROUPID="group_file_714" ID="file_714" MIMETYPE="text/plain; charset=utf-8" SIZE="127" CHECKSUM="44d9ed4f6902860fbb92bf26df40fc3b">
+<mets:FLocat LOCTYPE="URL" xlink:title="license.txt" xlink:type="locator" xlink:href="/bitstream/handle/10672/304/license.txt?sequence=-1"/>
+</mets:file>
+</mets:fileGrp>
+</mets:fileSec>
+<mets:structMap LABEL="DSpace" TYPE="LOGICAL">
+<mets:div DMDID="dmd_1" TYPE="DSpace Item">
+<mets:div ID="div_2" TYPE="DSpace Content Bitstream">
+<mets:fptr FILEID="file_713"/>
+</mets:div>
+</mets:div>
+</mets:structMap>
+</mets:METS>
