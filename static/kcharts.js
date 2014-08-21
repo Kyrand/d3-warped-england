@@ -189,10 +189,10 @@
     };
 
     kcharts.BasicChart = function(params) {
-        this.params = typeof params !== 'undefined'? params: {
-            height:100, width:100
+        var default_params = {
+            height:100, width:100, data:false
         };
-        this.params.data = {};
+        this.params = _.extend(default_params, params);
  
         var method, that = this,
         
@@ -238,7 +238,7 @@
                     .selectAll('g').data([data]);
                 
                 plugin.gEnter = plugin.svg.enter()
-                    .append('g').attr('class', plugin.type() || 'plugin');
+                    .append('g').attr('class', plugin.class() || 'plugin');
                 plugin.build();
             });
         };
@@ -246,6 +246,10 @@
         for(method in this.params){
             plugin[method] = makeAPIMethod(plugin, this, method);
         }
+        
+        plugin.unique = function(selector) {
+            // to be implemented
+        };
         
         plugin.build = function() {
             
@@ -258,7 +262,7 @@
     var COLOR_BARS = 50;
     kcharts.ColorBar = function(){
         var cbar = new kcharts.BasicPlugin({
-            type: 'colorbar',
+            class: 'colorbar',
             title: '',
             horizontal: false,
             width: 10,

@@ -43,7 +43,7 @@ stroke-linejoin: round;
 }
 
 #chart-holder{
-min-height:900px;
+min-height:700px;
 }
 
 #main-chart-holder{
@@ -56,7 +56,8 @@ position:relative;
 
 #main-chart{
 font: 12px sans-serif;
-height:700px;
+height:600px;
+margin-top:-30px;
 }
 
 #sub-chart-holder{
@@ -69,7 +70,8 @@ height:700px;
 background: #666;
 }
 
-#buttons .btn{
+#buttons{
+z-index:999;
 <!-- margin-left: 5px -->
 }
 
@@ -83,8 +85,8 @@ width: 500px;
 
 div#years{
 position:absolute;
-left:300px;
-top:30px;
+left:310px;
+top:0px;
 font-size:42px;
 font-weight:bold;
 }
@@ -103,7 +105,7 @@ font: 12px sans-serif;
 </style>
 
 <div class='container'>
-  <h1>Warped England</h1> 
+  <h1>Warped England: Why Young People Can't Buy Houses Anymore</h1> 
   <h2>Visualizing change in the ratio of house-prices to household-incomes</h2>
   <div id='intro'>
     <p>Probably the two most important English economic indicators, for the common citizenry at least, are median average house price and median average household income (The 'median' is important here, for a brief explanation see <a href="http://economistsview.typepad.com/economistsview/2011/09/mean-vs-median-income-growth.html">here</a> - in essence it's the average that better reflects the common lot.). By combining these two we can derive a ratio, of house-incomes to house-prices (HI / HP), which says a lot about the state of the English economy.</br> I wanted to track the changes of this ratio using the most recent data available (1997-2012) and, to dramatically emphasize the change, reflect this by warping a map of the English regions to make the areas reflect the change in this ratio since 1997. What this shows is a staggering reduction in house-purchasing power over a mere fifteen years, not even a full generation. Across England the HI / HP has halved during this period, but many regions, particularly the south-east, have seen far greater rises (e.g. Brighton, where houses in 2012 were, on average, 9.5 times the household incomes of the city).
@@ -111,8 +113,10 @@ font: 12px sans-serif;
   </p>
   </div>
   <div class='row' id='chart-holder'>
-    <div class="col-md-7" id='main-chart-holder'>
-    <p>The map below shows the English regions, with their areas warped so as to reflect the reduction, relative to 1997, of the house purchasing power of the median average household wage. You can click on a region to highlight it (right). The slider at the bottom allows you to change the year, or you can press the animate button. To turn the area warping off press 'warp off'.</p>
+    <div class='col-sm-12'>
+      <p>The large map below shows the English regions, with their areas warped so as to reflect the reduction, relative to 1997, of the house purchasing power of the median average household wage. You can click on a region to highlight it (right map). The slider at the bottom allows you to change the year, or you can <b>press the animate button</b>. To turn the area warping off press 'warp off'.</p>
+    </div>
+    <div class="col-sm-7" id='main-chart-holder'>
     <div class='btn-group btn-group-sm' id='buttons'></div>
     <div id='main-chart-wrapper'>
       <div id='years'><span id='current'>1997</span> / <span id='yearstart'>1997</span></div>
@@ -122,21 +126,21 @@ font: 12px sans-serif;
         <div id='year-slider'></div>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-sm-5">
       <h2 id="sub-chart-title"></h2>
       <div class='row'>
-        <div class="col-md-6" id='sub-chart-holder'>
+        <div class="col-sm-6" id='sub-chart-holder'>
           <svg id="sub-chart"></svg>
         </div>
-        <div class="col-md-6" id='sub-chart-info'>
+        <div class="col-sm-6" id='sub-chart-info'>
           <p>Here we superimpose a shrunken regional map, adjusting for the change in house buying power since 1997. The map is scaled by the ratio HI / HP for the current year divided by that of 1997. 
         </div>
       </div>
       <div class='row'>
-        <div class='col-md-12'>
+        <div class='col-sm-12'>
       Below is a line-chart showing the yearly change in house-prices as a multiple of median household income for England and the selected region. Click on the big map left to change the region.
         </div>
-        <div class='col-md-12' id='sub-chart-graph'></div>
+        <div class='col-sm-12' id='sub-chart-graph'></div>
       </div>
     </div>
   </div>

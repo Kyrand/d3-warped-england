@@ -4,11 +4,10 @@ var chart, submap, map, slider, MAP_WIDTH = 600,
     COLORMAP = 'YlOrRd', // 'YlGnBu'
     START_YEAR = 1997,
     END_YEAR = 2012,
-    END_YEAR_PAUSE = 10000;//
+    END_YEAR_PAUSE = 10000,//
     DEFAULT_REGION = 'East Sussex',//'Brighton and Hove';//'London',
     BACKGROUND_COLOR = '#ddd',
-    UPDATE_DT = 2000
-;
+    UPDATE_DT = 2000;
 
 var correctScaleTrans = function(_map, features) {
     var height = _map.height(), width = _map.width();
@@ -20,7 +19,7 @@ var correctScaleTrans = function(_map, features) {
 
     // Compute the bounds of a feature of interest, then derive scale & translate.
     var b = path.bounds(features),
-    s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+    s = 0.95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
     _map.projection.scale(s).translate(t);
